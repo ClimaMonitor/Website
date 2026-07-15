@@ -50,6 +50,12 @@ body { font-family: var(--font); color: var(--text); background: var(--white); l
 .btn-amber { display: inline-block; background: var(--amber); color: var(--green-deep); padding: 0.875rem 2rem; border-radius: var(--radius-md); font-size: 16px; font-weight: 700; text-decoration: none; white-space: nowrap; transition: background 0.18s; }
 .btn-amber:hover { background: #e6ac00; }
 
+/* Language toggle */
+.lang-toggle { display: flex; align-items: center; background: var(--green-tint); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; flex-shrink: 0; }
+.lang-btn { padding: 5px 14px; font-size: 13px; font-weight: 600; color: var(--text-soft); background: transparent; border: none; cursor: pointer; font-family: var(--font); transition: all 0.18s; border-radius: 20px; }
+.lang-btn.active { background: var(--green); color: var(--white); }
+.lang-btn:not(.active):hover { color: var(--green); }
+
 /* Nav */
 nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 1rem; }
@@ -58,6 +64,7 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-b
 .nav-links { display: flex; align-items: center; gap: 1.75rem; }
 .nav-links a { font-size: 15px; font-weight: 500; color: var(--text-mid); text-decoration: none; transition: color 0.15s; }
 .nav-links a:hover { color: var(--green); }
+.nav-right { display: flex; align-items: center; gap: 1rem; }
 .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; border-radius: 2px; }
 .mobile-menu { display: none; flex-direction: column; border-top: 1px solid var(--border); background: var(--white); }
@@ -74,7 +81,6 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-b
 .hero-sub { font-size: 17px; color: rgba(255,255,255,0.78); line-height: 1.7; margin-bottom: 2rem; max-width: 460px; }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* Hero concept card */
 .concept-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius-lg); padding: 2rem 1.75rem; }
 .concept-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 1.5rem; }
 .concept-step { display: flex; gap: 1rem; align-items: flex-start; padding: 0.875rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -84,17 +90,14 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-b
 .concept-step-title { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
 .concept-step-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.45; }
 
-/* Tagline strip */
 .tagline-strip { background: var(--green); color: var(--white); padding: 0.875rem 0; text-align: center; font-size: 14px; font-weight: 500; letter-spacing: 0.06em; }
 
-/* Sections */
 section { padding: 5rem 0; }
 section.alt { background: var(--green-tint); }
 .section-header { text-align: center; max-width: 680px; margin: 0 auto 3rem; }
 .section-header h2 { font-size: clamp(2.25rem, 4.5vw, 3.25rem); font-weight: 700; line-height: 1.15; margin-bottom: 0.875rem; color: var(--green-deep); }
 .section-header p { font-size: 17px; color: var(--text-soft); line-height: 1.7; }
 
-/* About */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
 .about-bullets { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.25rem; }
 .about-bullets li { display: flex; gap: 0.875rem; align-items: flex-start; }
@@ -106,7 +109,6 @@ section.alt { background: var(--green-tint); }
 .about-right p { font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
 .about-right p:last-child { margin-bottom: 0; }
 
-/* Impact quadrant grid */
 .impact-block { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
 .impact-text h2 { font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 700; color: var(--green-deep); line-height: 1.2; margin-bottom: 1rem; }
 .impact-text p { font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
@@ -125,7 +127,6 @@ section.alt { background: var(--green-tint); }
 .impact-quad h3 { font-size: 14px; font-weight: 700; color: var(--green-deep); margin-bottom: 0.375rem; line-height: 1.3; }
 .impact-quad p { font-size: 12.5px; color: var(--text-soft); line-height: 1.55; }
 
-/* Research Workflow */
 .workflow-outer { overflow-x: auto; padding-bottom: 1rem; }
 .workflow { display: flex; align-items: flex-start; gap: 0; justify-content: center; min-width: 860px; padding: 1rem 0; }
 .wf-step { display: flex; flex-direction: column; align-items: center; gap: 0.875rem; flex: 1; position: relative; cursor: default; }
@@ -135,28 +136,10 @@ section.alt { background: var(--green-tint); }
 .wf-label { font-size: 13px; font-weight: 600; color: var(--green-deep); text-align: center; line-height: 1.35; max-width: 90px; }
 .wf-arrow { flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding-top: 22px; width: 28px; }
 .wf-arrow svg { width: 20px; height: 20px; stroke: var(--green-dark); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-
-/* Workflow cursor tooltip - follows mouse, fixed to viewport */
-#wf-cursor-tip {
-  position: fixed;
-  background: var(--green-deep);
-  color: var(--white);
-  font-size: 13px;
-  line-height: 1.5;
-  padding: 0.625rem 0.875rem;
-  border-radius: var(--radius-md);
-  max-width: 200px;
-  text-align: left;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.15s;
-  z-index: 9999;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-}
+#wf-cursor-tip { position: fixed; background: var(--green-deep); color: var(--white); font-size: 13px; line-height: 1.5; padding: 0.625rem 0.875rem; border-radius: var(--radius-md); max-width: 200px; text-align: left; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 9999; box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
 #wf-cursor-tip.visible { opacity: 1; }
 .wf-tooltip { display: none; }
 
-/* Tools */
 .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .tool-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem 1.75rem; background: var(--white); }
 .tool-card.featured { background: var(--green-deep); border-color: var(--green-deep); }
@@ -176,7 +159,6 @@ section.alt { background: var(--green-tint); }
 .tool-card.featured .tool-link { color: var(--amber); }
 .tool-link-arrow { font-size: 16px; line-height: 1; }
 
-/* Testimonials */
 .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
 .testimonial { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; }
 .testimonial-quote { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
@@ -184,12 +166,10 @@ section.alt { background: var(--green-tint); }
 .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--green-dark); flex-shrink: 0; }
 .testimonial-name { font-size: 14px; font-weight: 600; color: var(--green-deep); }
 .testimonial-role { font-size: 12.5px; color: var(--text-soft); }
-/* Photo row below testimonials */
 .testimonial-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 .testimonial-photo { border-radius: var(--radius-lg); overflow: hidden; height: 220px; }
 .testimonial-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* Pilot */
 .pilot-block { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
 .pilot-text h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; color: var(--green-deep); line-height: 1.3; margin-bottom: 1rem; }
 .pilot-text p { font-size: 16px; color: var(--text-mid); line-height: 1.75; margin-bottom: 1.5rem; }
@@ -209,13 +189,11 @@ section.alt { background: var(--green-tint); }
 .stat-num { font-size: 2rem; font-weight: 700; color: var(--green); }
 .stat-desc { font-size: 13px; color: var(--text-soft); margin-top: 3px; line-height: 1.4; }
 
-/* CM4Research */
 .research-block { background: var(--green-deep); color: var(--white); border-radius: var(--radius-lg); padding: 3rem 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
 .research-block .eyebrow { color: var(--amber); }
 .research-block h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; color: var(--white); margin-bottom: 0.75rem; line-height: 1.3; }
 .research-block p { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.7; }
 
-/* Contact */
 .contact-block { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
 .contact-info h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 700; color: var(--green-deep); margin-bottom: 0.75rem; }
 .contact-info p { font-size: 16px; color: var(--text-soft); line-height: 1.7; margin-bottom: 2rem; }
@@ -236,7 +214,6 @@ section.alt { background: var(--green-tint); }
 .form-divider span { font-size: 13px; color: var(--text-soft); white-space: nowrap; }
 .form-divider::before, .form-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-/* Footer */
 footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 3rem 0 2rem; }
 .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 0.875rem; }
@@ -248,7 +225,6 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; flex-wrap: wrap; gap: 0.5rem; }
 .footer-bottom p { font-size: 13px; }
 
-/* Responsive */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .impact-block { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -275,7 +251,7 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
 </head>
 <body>
 
-<!-- NAV -->
+<!-- SHARED NAV (always visible) -->
 <nav>
   <div class="container">
     <div class="nav-inner">
@@ -289,20 +265,38 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
         </svg>
         <span class="nav-logo-text">ClimaMonitor</span>
       </a>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#workflow">How It Works</a>
-        <a href="#pilot">2026 Pilot</a>
-        <a href="#tools">Tools</a>
-        <a href="#research">For Research</a>
-        <a href="#contact" class="btn-primary">Join the Program</a>
+      <div class="nav-right">
+        <!-- EN nav links -->
+        <div class="nav-links" id="nav-en">
+          <a href="#about">About</a>
+          <a href="#workflow">How It Works</a>
+          <a href="#pilot">2026 Pilot</a>
+          <a href="#tools">Tools</a>
+          <a href="#research">For Research</a>
+          <a href="#contact" class="btn-primary">Join the Program</a>
+        </div>
+        <!-- CS nav links -->
+        <div class="nav-links" id="nav-cs" style="display:none;">
+          <a href="#about">O nás</a>
+          <a href="#workflow">Jak to funguje</a>
+          <a href="#pilot">2026 Pilot</a>
+          <a href="#tools">Nástroje</a>
+          <a href="#research">Pro univerzity</a>
+          <a href="#contact" class="btn-primary">Zapojit se</a>
+        </div>
+        <!-- Language toggle -->
+        <div class="lang-toggle">
+          <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" id="btn-cs" onclick="setLang('cs')">CS</button>
+        </div>
+        <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
+  <!-- EN mobile menu -->
+  <div class="mobile-menu" id="mobileMenu-en">
     <a href="#about" onclick="toggleMenu()">About</a>
     <a href="#workflow" onclick="toggleMenu()">How It Works</a>
     <a href="#pilot" onclick="toggleMenu()">2026 Pilot</a>
@@ -310,9 +304,20 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
     <a href="#research" onclick="toggleMenu()">For Research</a>
     <a href="#contact" onclick="toggleMenu()">Join the Program</a>
   </div>
+  <!-- CS mobile menu -->
+  <div class="mobile-menu" id="mobileMenu-cs" style="display:none;">
+    <a href="#about" onclick="toggleMenu()">O nás</a>
+    <a href="#workflow" onclick="toggleMenu()">Jak to funguje</a>
+    <a href="#pilot" onclick="toggleMenu()">2026 Pilot</a>
+    <a href="#tools" onclick="toggleMenu()">Nástroje</a>
+    <a href="#research" onclick="toggleMenu()">Pro univerzity</a>
+    <a href="#contact" onclick="toggleMenu()">Zapojit se</a>
+  </div>
 </nav>
 
-<!-- HERO -->
+<!-- ═══════════════════════════════ ENGLISH CONTENT ═══════════════════════════════ -->
+<div id="content-en">
+
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
@@ -327,85 +332,24 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
       </div>
       <div class="concept-card">
         <div class="concept-label">The ClimaMonitor Model</div>
-        <div class="concept-step">
-          <div class="concept-step-num">1</div>
-          <div>
-            <div class="concept-step-title">Schools Become Field Stations</div>
-            <div class="concept-step-desc">Standardized IoT sensors measure atmospheric and soil conditions at your school.</div>
-          </div>
-        </div>
-        <div class="concept-step">
-          <div class="concept-step-num">2</div>
-          <div>
-            <div class="concept-step-title">Students Follow University Protocols</div>
-            <div class="concept-step-desc">Research objectives from academic partners are translated into age-appropriate experiments.</div>
-          </div>
-        </div>
-        <div class="concept-step">
-          <div class="concept-step-num">3</div>
-          <div>
-            <div class="concept-step-title">Data Feeds Research</div>
-            <div class="concept-step-desc">Validated datasets are returned to university partners for analysis and publication.</div>
-          </div>
-        </div>
-        <div class="concept-step">
-          <div class="concept-step-num">4</div>
-          <div>
-            <div class="concept-step-title">Results Come Back to Students</div>
-            <div class="concept-step-desc">Every school receives the university findings and compares results across the network.</div>
-          </div>
-        </div>
+        <div class="concept-step"><div class="concept-step-num">1</div><div><div class="concept-step-title">Schools Become Field Stations</div><div class="concept-step-desc">Standardized IoT sensors measure atmospheric and soil conditions at your school.</div></div></div>
+        <div class="concept-step"><div class="concept-step-num">2</div><div><div class="concept-step-title">Students Follow University Protocols</div><div class="concept-step-desc">Research objectives from academic partners are translated into age-appropriate experiments.</div></div></div>
+        <div class="concept-step"><div class="concept-step-num">3</div><div><div class="concept-step-title">Data Feeds Research</div><div class="concept-step-desc">Validated datasets are returned to university partners for analysis and publication.</div></div></div>
+        <div class="concept-step"><div class="concept-step-num">4</div><div><div class="concept-step-title">Results Come Back to Students</div><div class="concept-step-desc">Every school receives the university findings and compares results across the network.</div></div></div>
       </div>
     </div>
   </div>
 </section>
+<div class="tagline-strip">Monitoring Weather &nbsp;&#183;&nbsp; Understanding Climate &nbsp;&#183;&nbsp; Delivering Data</div>
 
-<!-- TAGLINE STRIP -->
-<div class="tagline-strip">
-  Monitoring Weather &nbsp;&#183;&nbsp; Understanding Climate &nbsp;&#183;&nbsp; Delivering Data
-</div>
-
-<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
       <ul class="about-bullets">
-        <li>
-          <div class="about-bullet-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div>
-            <div class="about-bullet-title">Founded in Czech Republic, 2025</div>
-            <div class="about-bullet-desc">Established in Prague to bridge school science education and active university research.</div>
-          </div>
-        </li>
-        <li>
-          <div class="about-bullet-icon">
-            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          </div>
-          <div>
-            <div class="about-bullet-title">Scientific Partner: CZU Prague</div>
-            <div class="about-bullet-desc">Czech University of Life Sciences co-designs all experimental protocols and leads publication.</div>
-          </div>
-        </li>
-        <li>
-          <div class="about-bullet-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div>
-            <div class="about-bullet-title">Pan-European Vision for 2028</div>
-            <div class="about-bullet-desc">A certified network of School Research Stations operating across Europe under standardized protocols.</div>
-          </div>
-        </li>
-        <li>
-          <div class="about-bullet-icon">
-            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <div>
-            <div class="about-bullet-title">Better Data. Better Science. Better Future.</div>
-            <div class="about-bullet-desc">Every school that joins contributes to our collective understanding of a changing climate.</div>
-          </div>
-        </li>
+        <li><div class="about-bullet-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="about-bullet-title">Founded in Czech Republic, 2025</div><div class="about-bullet-desc">Established in Prague to bridge school science education and active university research.</div></div></li>
+        <li><div class="about-bullet-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><div class="about-bullet-title">Scientific Partner: CZU Prague</div><div class="about-bullet-desc">Czech University of Life Sciences co-designs all experimental protocols and leads publication.</div></div></li>
+        <li><div class="about-bullet-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="about-bullet-title">Pan-European Vision for 2028</div><div class="about-bullet-desc">A certified network of School Research Stations operating across Europe under standardized protocols.</div></div></li>
+        <li><div class="about-bullet-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="about-bullet-title">Better Data. Better Science. Better Future.</div><div class="about-bullet-desc">Every school that joins contributes to our collective understanding of a changing climate.</div></div></li>
       </ul>
       <div class="about-right">
         <div class="eyebrow">About Us</div>
@@ -417,7 +361,6 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
   </div>
 </section>
 
-<!-- DIRECT IMPACT ON STUDENTS -->
 <section id="impact" class="alt">
   <div class="container">
     <div class="impact-block">
@@ -428,40 +371,15 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
         <p>The skills students develop through ClimaMonitor go beyond curriculum. They learn to collect and question data, communicate findings, and think critically about environmental systems.</p>
       </div>
       <div class="impact-quadrant">
-        <div class="impact-quad">
-          <div class="impact-quad-icon green">
-            <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          </div>
-          <h3>From Passive to Active Learner</h3>
-          <p>Students move from reading about environmental phenomena to measuring, recording, and analyzing them firsthand.</p>
-        </div>
-        <div class="impact-quad">
-          <div class="impact-quad-icon amber">
-            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <h3>Their Data Matters</h3>
-          <p>Measurements collected by students are validated and incorporated into published university research. The contribution is real.</p>
-        </div>
-        <div class="impact-quad">
-          <div class="impact-quad-icon blue">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <h3>Climate Literacy Built on Evidence</h3>
-          <p>Understanding climate through data students have collected themselves produces durable, evidence-based literacy.</p>
-        </div>
-        <div class="impact-quad">
-          <div class="impact-quad-icon green">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          </div>
-          <h3>Cross-Disciplinary STEM</h3>
-          <p>The programme integrates science, technology, mathematics, and environmental studies in one cohesive project.</p>
-        </div>
+        <div class="impact-quad"><div class="impact-quad-icon green"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><h3>From Passive to Active Learner</h3><p>Students move from reading about environmental phenomena to measuring, recording, and analyzing them firsthand.</p></div>
+        <div class="impact-quad"><div class="impact-quad-icon amber"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Their Data Matters</h3><p>Measurements collected by students are validated and incorporated into published university research. The contribution is real.</p></div>
+        <div class="impact-quad"><div class="impact-quad-icon blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>Climate Literacy Built on Evidence</h3><p>Understanding climate through data students have collected themselves produces durable, evidence-based literacy.</p></div>
+        <div class="impact-quad"><div class="impact-quad-icon green"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3>Cross-Disciplinary STEM</h3><p>The programme integrates science, technology, mathematics, and environmental studies in one cohesive project.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- RESEARCH WORKFLOW -->
 <section id="workflow">
   <div class="container">
     <div class="section-header">
@@ -469,145 +387,44 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
       <h2>The Research Workflow</h2>
       <p>From a university research question to a published dataset. ClimaMonitor manages every step of the pipeline, with schools at the centre. Hover over each step to learn more.</p>
     </div>
-    <div class="workflow-outer">
-      <div class="workflow">
-
-        <div class="wf-step">
-          <div class="wf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-          <div class="wf-label">Research Question</div>
-          <div class="wf-tooltip">A university or research institution defines the scientific question and objectives for the study.</div>
-        </div>
-        <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-
-        <div class="wf-step">
-          <div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <div class="wf-label">Protocol</div>
-          <div class="wf-tooltip">CZU and ClimaMonitor design a standardized measurement protocol that all schools follow.</div>
-        </div>
-        <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-
-        <div class="wf-step">
-          <div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <div class="wf-label">Classroom Translation</div>
-          <div class="wf-tooltip">ClimaMonitor adapts the protocol into age-appropriate instructions and materials for students and teachers.</div>
-        </div>
-        <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-
-        <div class="wf-step">
-          <div class="wf-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-          <div class="wf-label">Data Collection</div>
-          <div class="wf-tooltip">IoT weather stations and soil sensors record data continuously. Students add their own field observations.</div>
-        </div>
-        <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-
-        <div class="wf-step">
-          <div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <div class="wf-label">Data Validation</div>
-          <div class="wf-tooltip">Collected data is reviewed for quality and consistency before being submitted to the research team.</div>
-        </div>
-        <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-
-        <div class="wf-step">
-          <div class="wf-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-          <div class="wf-label">Research Dataset</div>
-          <div class="wf-tooltip">Validated data from all participating schools is aggregated into a single research-grade dataset.</div>
-        </div>
-        <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-
-        <div class="wf-step">
-          <div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-          <div class="wf-label">Publication</div>
-          <div class="wf-tooltip">The university publishes research findings. Results are shared back with every participating school.</div>
-        </div>
-        <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
-
-        <div class="wf-step">
-          <div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-          <div class="wf-label">Learning Phase</div>
-          <div class="wf-tooltip">Students review the published results, compare their school's data with others, and discuss findings in class.</div>
-        </div>
-
-      </div>
-    </div>
+    <div class="workflow-outer"><div class="workflow">
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="wf-label">Research Question</div><div class="wf-tooltip">A university or research institution defines the scientific question and objectives for the study.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="wf-label">Protocol</div><div class="wf-tooltip">CZU and ClimaMonitor design a standardized measurement protocol that all schools follow.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="wf-label">Classroom Translation</div><div class="wf-tooltip">ClimaMonitor adapts the protocol into age-appropriate instructions and materials for students and teachers.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="wf-label">Data Collection</div><div class="wf-tooltip">IoT weather stations and soil sensors record data continuously. Students add their own field observations.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="wf-label">Data Validation</div><div class="wf-tooltip">Collected data is reviewed for quality and consistency before being submitted to the research team.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div class="wf-label">Research Dataset</div><div class="wf-tooltip">Validated data from all participating schools is aggregated into a single research-grade dataset.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="wf-label">Publication</div><div class="wf-tooltip">The university publishes research findings. Results are shared back with every participating school.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="wf-label">Learning Phase</div><div class="wf-tooltip">Students review the published results, compare their school's data with others, and discuss findings in class.</div></div>
+    </div></div>
   </div>
 </section>
 
-<!-- TOOLS -->
 <section id="tools" class="alt">
   <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">Programme Tools</div>
-      <h2>Everything Schools Need to Participate</h2>
-      <p>ClimaMonitor provides a complete set of tools that support teachers, students, and researchers throughout the programme.</p>
-    </div>
+    <div class="section-header"><div class="eyebrow">Programme Tools</div><h2>Everything Schools Need to Participate</h2><p>ClimaMonitor provides a complete set of tools that support teachers, students, and researchers throughout the programme.</p></div>
     <div class="tools-grid">
-      <div class="tool-card">
-        <div class="tool-icon blue">
-          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        </div>
-        <h3>Knowledge Wiki</h3>
-        <p>A structured knowledge base for teachers and students covering experiment setup, sensor operation, data interpretation, and climate science background.</p>
-        <a href="https://wiki.climamonitor.com/cs/home" target="_blank" rel="noopener" class="tool-link">Open the Wiki <span class="tool-link-arrow">&#8599;</span></a>
-      </div>
-      <div class="tool-card featured">
-        <div class="tool-icon green">
-          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3>Live Data Portal</h3>
-        <p>All sensor data collected across participating schools is accessible in real time. Students and researchers can view, compare, and download datasets from any location.</p>
-        <a href="https://data.climamonitor.com" target="_blank" rel="noopener" class="tool-link">View the Data Portal <span class="tool-link-arrow">&#8599;</span></a>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon amber">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-        </div>
-        <h3>AI Assistant</h3>
-        <p>An AI assistant is currently in development.</p>
-        <a href="https://salmon-hill-0181f9003.7.azurestaticapps.net/" target="_blank" rel="noopener" class="tool-link">Preview the Assistant <span class="tool-link-arrow">&#8599;</span></a>
-      </div>
+      <div class="tool-card"><div class="tool-icon blue"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><h3>Knowledge Wiki</h3><p>A structured knowledge base for teachers and students covering experiment setup, sensor operation, data interpretation, and climate science background.</p><a href="https://wiki.climamonitor.com/cs/home" target="_blank" rel="noopener" class="tool-link">Open the Wiki <span class="tool-link-arrow">&#8599;</span></a></div>
+      <div class="tool-card featured"><div class="tool-icon green"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Live Data Portal</h3><p>All sensor data collected across participating schools is accessible in real time. Students and researchers can view, compare, and download datasets from any location.</p><a href="https://data.climamonitor.com" target="_blank" rel="noopener" class="tool-link">View the Data Portal <span class="tool-link-arrow">&#8599;</span></a></div>
+      <div class="tool-card"><div class="tool-icon amber"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div><h3>AI Assistant</h3><p>An AI assistant is currently in development.</p><a href="https://salmon-hill-0181f9003.7.azurestaticapps.net/" target="_blank" rel="noopener" class="tool-link">Preview the Assistant <span class="tool-link-arrow">&#8599;</span></a></div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">Testimonials</div>
-      <h2>What Schools Are Saying</h2>
-      <p>Feedback from teachers and school administrators participating in the 2026 pilot programme.</p>
-    </div>
+    <div class="section-header"><div class="eyebrow">Testimonials</div><h2>What Schools Are Saying</h2><p>Feedback from teachers and school administrators participating in the 2026 pilot programme.</p></div>
     <div class="testimonials-grid">
-      <div class="testimonial">
-        <div class="testimonial-quote">"ClimaMonitor transforms classrooms into real research hubs where students turn learning into impact. Our students do not just study climate change. They measure it, understand it, and become part of the solution."</div>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">ST</div>
-          <div>
-            <div class="testimonial-name">Science Teacher</div>
-            <div class="testimonial-role">Pilot School</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-quote">"ClimaMonitor brings education to life. It connects technology, science, and real-world challenges into one meaningful journey. Our students are not just studying climate change. They are contributing to real research. This is the future of modern education."</div>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">HS</div>
-          <div>
-            <div class="testimonial-name">Head of School</div>
-            <div class="testimonial-role">Pilot School</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial">
-        <div class="testimonial-quote">"We created ClimaMonitor to empower the next generation through real science. By connecting schools with universities and combining technology, data, and AI support, we are building a network of young researchers across Europe."</div>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">UC</div>
-          <div>
-            <div class="testimonial-name">University Coordinator</div>
-            <div class="testimonial-role">ClimaMonitor</div>
-          </div>
-        </div>
-      </div>
+      <div class="testimonial"><div class="testimonial-quote">"ClimaMonitor transforms classrooms into real research hubs where students turn learning into impact. Our students do not just study climate change. They measure it, understand it, and become part of the solution."</div><div class="testimonial-author"><div class="testimonial-avatar">ST</div><div><div class="testimonial-name">Science Teacher</div><div class="testimonial-role">Pilot School</div></div></div></div>
+      <div class="testimonial"><div class="testimonial-quote">"ClimaMonitor brings education to life. It connects technology, science, and real-world challenges into one meaningful journey. Our students are not just studying climate change. They are contributing to real research. This is the future of modern education."</div><div class="testimonial-author"><div class="testimonial-avatar">HS</div><div><div class="testimonial-name">Head of School</div><div class="testimonial-role">Pilot School</div></div></div></div>
+      <div class="testimonial"><div class="testimonial-quote">"We created ClimaMonitor to empower the next generation through real science. By connecting schools with universities and combining technology, data, and AI support, we are building a network of young researchers across Europe."</div><div class="testimonial-author"><div class="testimonial-avatar">UC</div><div><div class="testimonial-name">University Coordinator</div><div class="testimonial-role">ClimaMonitor</div></div></div></div>
     </div>
     <div class="testimonial-photos">
       <div class="testimonial-photo"><img src="students-digging.jpg" alt="Students preparing the experimental field"></div>
@@ -617,7 +434,6 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
   </div>
 </section>
 
-<!-- PILOT -->
 <section id="pilot" class="alt">
   <div class="container">
     <div class="pilot-block">
@@ -629,10 +445,7 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
         <a href="#contact" class="btn-outline">Join the 2027 Rollout</a>
       </div>
       <div class="pilot-visual">
-        <div class="pilot-badge">
-          <div class="pilot-badge-dot"></div>
-          Active - Spring to Autumn 2026
-        </div>
+        <div class="pilot-badge"><div class="pilot-badge-dot"></div>Active - Spring to Autumn 2026</div>
         <div>
           <div class="tl-item"><div class="tl-dot"></div><div class="tl-text"><strong>Feb - Mar:</strong> Weather station assembled and test bed prepared</div></div>
           <div class="tl-item"><div class="tl-dot"></div><div class="tl-text"><strong>Apr - May:</strong> Soil moisture probes installed and field prepared</div></div>
@@ -650,21 +463,15 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
   </div>
 </section>
 
-<!-- CM4RESEARCH -->
 <section id="research">
   <div class="container">
     <div class="research-block">
-      <div>
-        <div class="eyebrow">ClimaMonitor for Research</div>
-        <h2>A Distributed European School Research Network</h2>
-        <p>Universities and research organisations can access a structured network of schools operating under standardized scientific protocols. ClimaMonitor provides cost-effective distributed data collection, a documented public engagement component, and pan-European geographic reach. Full international expansion is planned for 2028.</p>
-      </div>
+      <div><div class="eyebrow">ClimaMonitor for Research</div><h2>A Distributed European School Research Network</h2><p>Universities and research organisations can access a structured network of schools operating under standardized scientific protocols. ClimaMonitor provides cost-effective distributed data collection, a documented public engagement component, and pan-European geographic reach. Full international expansion is planned for 2028.</p></div>
       <a href="#contact" class="btn-amber">Learn More</a>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="alt">
   <div class="container">
     <div class="contact-block">
@@ -673,42 +480,15 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
         <h2>Join the ClimaMonitor Programme</h2>
         <p>Whether you are a school, a teacher, or a research institution, we would like to hear from you. Send us a message or schedule a call directly.</p>
         <div class="contact-channels">
-          <a href="mailto:martin.tusl@climamonitor.com" class="contact-channel">
-            <div class="contact-channel-icon">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div>
-              <div class="contact-channel-label">Email</div>
-              <div class="contact-channel-value">Send us an email</div>
-            </div>
-          </a>
-          <a href="https://www.linkedin.com/company/climamonitor/" target="_blank" rel="noopener" class="contact-channel">
-            <div class="contact-channel-icon">
-              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </div>
-            <div>
-              <div class="contact-channel-label">LinkedIn</div>
-              <div class="contact-channel-value">linkedin.com/company/climamonitor</div>
-            </div>
-          </a>
-          <a href="https://www.facebook.com/climamonitor/" target="_blank" rel="noopener" class="contact-channel">
-            <div class="contact-channel-icon">
-              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </div>
-            <div>
-              <div class="contact-channel-label">Facebook</div>
-              <div class="contact-channel-value">facebook.com/climamonitor</div>
-            </div>
-          </a>
+          <a href="mailto:martin.tusl@climamonitor.com" class="contact-channel"><div class="contact-channel-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-channel-label">Email</div><div class="contact-channel-value">Send us an email</div></div></a>
+          <a href="https://www.linkedin.com/company/climamonitor/" target="_blank" rel="noopener" class="contact-channel"><div class="contact-channel-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div><div class="contact-channel-label">LinkedIn</div><div class="contact-channel-value">linkedin.com/company/climamonitor</div></div></a>
+          <a href="https://www.facebook.com/climamonitor/" target="_blank" rel="noopener" class="contact-channel"><div class="contact-channel-icon"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div><div><div class="contact-channel-label">Facebook</div><div class="contact-channel-value">facebook.com/climamonitor</div></div></a>
         </div>
       </div>
       <div class="contact-form">
         <h3>Send Us a Message</h3>
         <p class="contact-form-sub">Prefer to talk first? Schedule a call at a time that suits you.</p>
-        <a href="https://calendly.com/climamonitor/30min?month=2026-07" target="_blank" rel="noopener" class="calendly-btn">
-          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Schedule a Call via Calendly
-        </a>
+        <a href="https://calendly.com/climamonitor/30min?month=2026-07" target="_blank" rel="noopener" class="calendly-btn"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Schedule a Call via Calendly</a>
         <div class="form-divider"><span>or send an email</span></div>
         <a href="mailto:martin.tusl@climamonitor.com?subject=ClimaMonitor Partnership Inquiry" class="btn-primary" style="display:block;text-align:center;width:100%;padding:0.875rem;">Email Us</a>
       </div>
@@ -716,88 +496,283 @@ footer { background: var(--green-deep); color: rgba(255,255,255,0.65); padding: 
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div>
-        <div class="footer-brand">
-          <svg width="30" height="30" viewBox="6381 66 1597.531 1595.8657" xmlns="http://www.w3.org/2000/svg">
-            <g transform="matrix(0.19943335,0,0,0.19943335,4368.7175,-704.41103)"><path fill="#158466" d="m 10090,7864 v 0 c 0,-702 185,-1392 536,-2000 351,-608 856,-1113 1464,-1464 608,-351 1298,-536 2000,-536 v 0 c 702,0 1392,185 2000,536 608,351 1113,856 1464,1464 351,608 536,1298 536,2000 v 0 0 c 0,702 -185,1392 -536,2000 -351,608 -856,1113 -1464,1464 -608,351 -1298,536 -2000,536 v 0 c -702,0 -1392,-185 -2000,-536 -608,-351 -1113,-856 -1464,-1464 -351,-608 -536,-1298 -536,-2000 z"/></g>
-            <path fill="#729fcf" d="m 7235.7908,881.88148 c 188.162,-232.78386 50.6559,-37.93194 474.6884,-612.31086 144.526,123.76795 268.2631,344.16741 268.0515,599.68984 -0.1959,236.41134 -118.5744,470.04664 -281.0296,598.33914 -356.0128,-339.62 -304.8807,-416.3486 -461.7103,-585.71812 z"/>
-            <g transform="matrix(0.19943335,0,0,0.19943335,4368.7175,-704.41103)"><path fill="#729fcf" d="m 12250,7775 v 0 c 0,-307 81,-609 234,-875 154,-266 375,-487 641,-641 266,-153 568,-234 875,-234 v 0 c 307,0 609,81 875,234 266,154 487,375 641,641 153,266 234,568 234,875 v 0 0 c 0,307 -81,609 -234,875 -154,266 -375,487 -641,641 -266,153 -568,234 -875,234 v 0 c -307,0 -609,-81 -875,-234 -266,-154 -487,-375 -641,-641 -153,-266 -234,-568 -234,-875 z"/></g>
-            <g transform="matrix(0.20266857,0,0,0.20081935,4321.4832,-714.39296)"><path fill="#ffbf00" d="m 14600,5900 v 0 c 0,-228 60,-453 174,-650 114,-198 279,-362 476,-476 198,-114 422,-174 651,-174 v 0 c 228,0 452,60 650,174 197,114 362,278 476,476 114,197 174,422 174,650 v 0 0 c 0,228 -60,453 -174,650 -114,198 -279,362 -476,476 -198,114 -422,175 -650,175 v 0 c -229,0 -453,-61 -651,-175 -197,-114 -362,-278 -476,-476 -114,-197 -174,-422 -174,-650 z"/></g>
-            <g transform="matrix(0.21604633,0,0,0.21411458,4113.4916,-834.45622)"><path fill="#158466" d="m 14800,9900 v 0 c 0,-193 51,-383 147,-550 97,-167 236,-306 403,-403 167,-96 357,-147 550,-147 v 0 c 193,0 383,51 550,147 167,97 306,236 403,403 96,167 147,357 147,550 v 0 0 c 0,193 -51,383 -147,550 -97,167 -236,306 -403,403 -167,96 -357,147 -550,147 v 0 c -193,0 -383,-51 -550,-147 -167,-97 -306,-236 -403,-403 -96,-167 -147,-357 -147,-550 z"/></g>
-          </svg>
-          <span class="footer-brand-name">ClimaMonitor</span>
-        </div>
+        <div class="footer-brand"><svg width="30" height="30" viewBox="6381 66 1597.531 1595.8657" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(0.19943335,0,0,0.19943335,4368.7175,-704.41103)"><path fill="#158466" d="m 10090,7864 v 0 c 0,-702 185,-1392 536,-2000 351,-608 856,-1113 1464,-1464 608,-351 1298,-536 2000,-536 v 0 c 702,0 1392,185 2000,536 608,351 1113,856 1464,1464 351,608 536,1298 536,2000 v 0 0 c 0,702 -185,1392 -536,2000 -351,608 -856,1113 -1464,1464 -608,351 -1298,536 -2000,536 v 0 c -702,0 -1392,-185 -2000,-536 -608,-351 -1113,-856 -1464,-1464 -351,-608 -536,-1298 -536,-2000 z"/></g><path fill="#729fcf" d="m 7235.7908,881.88148 c 188.162,-232.78386 50.6559,-37.93194 474.6884,-612.31086 144.526,123.76795 268.2631,344.16741 268.0515,599.68984 -0.1959,236.41134 -118.5744,470.04664 -281.0296,598.33914 -356.0128,-339.62 -304.8807,-416.3486 -461.7103,-585.71812 z"/><g transform="matrix(0.19943335,0,0,0.19943335,4368.7175,-704.41103)"><path fill="#729fcf" d="m 12250,7775 v 0 c 0,-307 81,-609 234,-875 154,-266 375,-487 641,-641 266,-153 568,-234 875,-234 v 0 c 307,0 609,81 875,234 266,154 487,375 641,641 153,266 234,568 234,875 v 0 0 c 0,307 -81,609 -234,875 -154,266 -375,487 -641,641 -266,153 -568,234 -875,234 v 0 c -307,0 -609,-81 -875,-234 -266,-154 -487,-375 -641,-641 -153,-266 -234,-568 -234,-875 z"/></g><g transform="matrix(0.20266857,0,0,0.20081935,4321.4832,-714.39296)"><path fill="#ffbf00" d="m 14600,5900 v 0 c 0,-228 60,-453 174,-650 114,-198 279,-362 476,-476 198,-114 422,-174 651,-174 v 0 c 228,0 452,60 650,174 197,114 362,278 476,476 114,197 174,422 174,650 v 0 0 c 0,228 -60,453 -174,650 -114,198 -279,362 -476,476 -198,114 -422,175 -650,175 v 0 c -229,0 -453,-61 -651,-175 -197,-114 -362,-278 -476,-476 -114,-197 -174,-422 -174,-650 z"/></g><g transform="matrix(0.21604633,0,0,0.21411458,4113.4916,-834.45622)"><path fill="#158466" d="m 14800,9900 v 0 c 0,-193 51,-383 147,-550 97,-167 236,-306 403,-403 167,-96 357,-147 550,-147 v 0 c 193,0 383,51 550,147 167,97 306,236 403,403 96,167 147,357 147,550 v 0 0 c 0,193 -51,383 -147,550 -97,167 -236,306 -403,403 -167,96 -357,147 -550,147 v 0 c -193,0 -383,-51 -550,-147 -167,-97 -306,-236 -403,-403 -96,-167 -147,-357 -147,-550 z"/></g></svg><span class="footer-brand-name">ClimaMonitor</span></div>
         <p class="footer-tagline">Connecting schools with university researchers through standardized environmental monitoring and hands-on science education.</p>
       </div>
-      <div class="footer-col">
-        <h4>Programme</h4>
-        <a href="#about">About Us</a>
-        <a href="#workflow">How It Works</a>
-        <a href="#pilot">2026 Pilot</a>
-        <a href="#tools">Tools</a>
-        <a href="#research">For Research</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="mailto:martin.tusl@climamonitor.com">Email</a>
-        <a href="https://www.linkedin.com/company/climamonitor/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://www.facebook.com/climamonitor/" target="_blank" rel="noopener">Facebook</a>
-      </div>
+      <div class="footer-col"><h4>Programme</h4><a href="#about">About Us</a><a href="#workflow">How It Works</a><a href="#pilot">2026 Pilot</a><a href="#tools">Tools</a><a href="#research">For Research</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="mailto:martin.tusl@climamonitor.com">Email</a><a href="https://www.linkedin.com/company/climamonitor/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/climamonitor/" target="_blank" rel="noopener">Facebook</a></div>
     </div>
-    <div class="footer-bottom">
-      <p>&#169; 2026 ClimaMonitor s.r.o. &#183; Founded in the Czech Republic</p>
-    </div>
+    <div class="footer-bottom"><p>&#169; 2026 ClimaMonitor s.r.o. &#183; Founded in the Czech Republic</p></div>
   </div>
 </footer>
+
+</div><!-- end #content-en -->
+
+<!-- ═══════════════════════════════ CZECH CONTENT ═══════════════════════════════ -->
+<div id="content-cs" style="display:none;">
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">Vzdělávání + Věda + Klima</div>
+        <h1>Věda ve <em>Vaší</em> Třídě</h1>
+        <p class="hero-sub">ClimaMonitor propojuje základní a střední školy s univerzitními vědci. Studenti sbírají reálná environmentální data a přispívají k publikovaným vědeckým studiím.</p>
+        <div class="hero-actions">
+          <a href="#about" class="btn-primary">Zapojit se do programu</a>
+          <a href="#workflow" class="btn-hero-outline">Podívejte se, jak to funguje</a>
+        </div>
+      </div>
+      <div class="concept-card">
+        <div class="concept-label">Model ClimaMonitor</div>
+        <div class="concept-step"><div class="concept-step-num">1</div><div><div class="concept-step-title">Školy se stávají terénními stanicemi</div><div class="concept-step-desc">Standardizované IoT senzory měří atmosférické a půdní podmínky ve Vaší škole.</div></div></div>
+        <div class="concept-step"><div class="concept-step-num">2</div><div><div class="concept-step-title">Studenti postupují podle výzkumného protokolu</div><div class="concept-step-desc">Výzkumné cíle od akademických partnerů jsou převedeny na věkově odpovídající experimenty.</div></div></div>
+        <div class="concept-step"><div class="concept-step-num">3</div><div><div class="concept-step-title">Výzkum využívá data</div><div class="concept-step-desc">Validovaná data se vrací univerzitním partnerům k analýze a publikaci.</div></div></div>
+        <div class="concept-step"><div class="concept-step-num">4</div><div><div class="concept-step-title">Výsledky se vrací studentům</div><div class="concept-step-desc">Školy obdrží výzkumné zprávy a porovnají výsledky z celé sítě.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="tagline-strip">Sledujeme počasí &nbsp;&#183;&nbsp; Zkoumáme klima &nbsp;&#183;&nbsp; Poskytujeme data</div>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <ul class="about-bullets">
+        <li><div class="about-bullet-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="about-bullet-title">Založeno v České republice, 2025</div><div class="about-bullet-desc">Společnost byla založena v Praze za účelem propojení školní přírodovědné výuky a aktivního univerzitního výzkumu.</div></div></li>
+        <li><div class="about-bullet-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><div class="about-bullet-title">Vědecký Partner: ČZU Praha</div><div class="about-bullet-desc">Česká zemědělská univerzita spoluvytváří všechny experimentální protokoly a vede publikace.</div></div></li>
+        <li><div class="about-bullet-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="about-bullet-title">Pan-Evropská vize pro 2028</div><div class="about-bullet-desc">Certifikovaná síť školních výzkumných stanic působících po celé Evropě podle standardizovaných protokolů.</div></div></li>
+        <li><div class="about-bullet-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="about-bullet-title">Kvalitnější data. Lepší věda. Dobrá budoucnost.</div><div class="about-bullet-desc">Každá škola, která se připojí, přispívá k našemu společnému porozumění měnícímu se klimatu.</div></div></li>
+      </ul>
+      <div class="about-right">
+        <div class="eyebrow">O nás</div>
+        <h2>Vzdělávání, věda a klima v jednom programu</h2>
+        <p>ClimaMonitor je vzdělávací a výzkumná platforma, která propojuje základní a střední školy s univerzitním výzkumem klimatu. Studenti praktikují vědecké postupy a pořizují terénní data, která přispívají do výzkumných projektů.</p>
+        <p>Program byl vyvinut ve spolupráci s Českou zemědělskou univerzitou v Praze a je navržen tak, aby se do roku 2028 rozšířil na distribuovanou výzkumnou síť po celé Evropě.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="impact" class="alt">
+  <div class="container">
+    <div class="impact-block">
+      <div class="impact-text">
+        <div class="eyebrow">Přímý dopad na studenty</div>
+        <h2>Věda, která mění pohled mladých lidí na svět</h2>
+        <p>Většina studentů se učí o změně klimatu z učebnic. Studenti ClimaMonitoru klima sami pozorují, porovnávají výsledky s vrstevníky a přispívají k univerzitnímu výzkumu. Tato zkušenost buduje zásadně odlišný vztah k vědě a životnímu prostředí.</p>
+        <p>Dovednosti, které studenti rozvíjejí prostřednictvím ClimaMonitoru, přesahují běžný školní program. Studenti se učí pořizovat a ověřovat data, sdílet výsledky a kriticky přemýšlet o ekologických systémech.</p>
+      </div>
+      <div class="impact-quadrant">
+        <div class="impact-quad"><div class="impact-quad-icon green"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><h3>Od pasivního k aktivnímu studentovi</h3><p>Studenti namísto čtení o životním prostředí projevy počasí měří, zaznamenávají a sami analyzují.</p></div>
+        <div class="impact-quad"><div class="impact-quad-icon amber"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Jejich data jsou důležitá</h3><p>Měření provedená studenty jsou validována a zahrnuta do publikovaného skutečného univerzitního výzkumu.</p></div>
+        <div class="impact-quad"><div class="impact-quad-icon blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>Klimatická gramotnost na základě důkazů</h3><p>Porozumění klimatu prostřednictvím dat, která si studenti sami nasbírali, produkuje trvalou, na důkazech založenou znalost.</p></div>
+        <div class="impact-quad"><div class="impact-quad-icon green"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3>Mezioborové vzdělávání</h3><p>Program integruje vědu, technologie, matematiku a environmentální studia do uceleného projektu.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="workflow">
+  <div class="container">
+    <div class="section-header"><div class="eyebrow">Jak to funguje</div><h2>Vědecký postup</h2><p>Od univerzitní výzkumné otázky po publikovaný datový soubor. ClimaMonitor vede každý krok s důrazem na školy. Přejeďte myší přes obrázky a zjistěte více.</p></div>
+    <div class="workflow-outer"><div class="workflow">
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="wf-label">Téma výzkumu</div><div class="wf-tooltip">Univerzita nebo výzkumný team definuje zkoumané téma a cíle studie.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="wf-label">Protokol</div><div class="wf-tooltip">ČZU a ClimaMonitor připraví standardizovaný měřicí protokol, podle kterého postupují všechny školy.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="wf-label">Školní instrukce</div><div class="wf-tooltip">ClimaMonitor zpracuje výzkumný protokol tak, aby obsahoval instrukce a materiály pro učitele přiměřené znalostem studentů.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="wf-label">Sběr dat</div><div class="wf-tooltip">IoT meteorologické stanice a půdní senzory průběžně zaznamenávají data. Studenti přidávají vlastní terénní pozorování.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="wf-label">Validace dat</div><div class="wf-tooltip">Probíhá kontrola kvality a úplnosti dat poskytovaných výzkumnému teamu.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div class="wf-label">Výzkumný Dataset</div><div class="wf-tooltip">Ověřená data ze všech zapojených škol jsou poskytována v uceleném datovém souboru.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="wf-label">Výsledky výzkumu</div><div class="wf-tooltip">Publikované výsledky výzkumu jsou sdíleny se školami, které byly zapojeny do získávání dat.</div></div>
+      <div class="wf-arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="wf-step"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="wf-label">Ověření poznatků</div><div class="wf-tooltip">S pomocí získaných znalostí porovnají studenti publikované výsledky a diskutují poznatky ve třídě.</div></div>
+    </div></div>
+  </div>
+</section>
+
+<section id="tools" class="alt">
+  <div class="container">
+    <div class="section-header"><div class="eyebrow">Nástroje programu</div><h2>Vše co školy potřebují k účasti</h2><p>ClimaMonitor poskytuje kompletní sadu nástrojů které vedou učitele, studenty a výzkumníky během školního výzkumného projektu.</p></div>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tool-icon blue"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><h3>Znalostní Wiki</h3><p>Postupně doplňovaná znalostní databáze pro učitele a studenty poskytující informace o přípravě experimentu, provozu senzorů, interpretaci dat a informací o zemském klimatu a počasí.</p><a href="https://wiki.climamonitor.com/cs/home" target="_blank" rel="noopener" class="tool-link">Otevřít Wiki <span class="tool-link-arrow">&#8599;</span></a></div>
+      <div class="tool-card featured"><div class="tool-icon green"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Portal naměřených dat</h3><p>Všechna data ze senzorů a pozorování dostupná v reálném čase. Výzkumníci mohou pracovat s daty od všech školních teamů.</p><a href="https://data.climamonitor.com" target="_blank" rel="noopener" class="tool-link">Zobrazit datový portal <span class="tool-link-arrow">&#8599;</span></a></div>
+      <div class="tool-card"><div class="tool-icon amber"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div><h3>AI Assistant</h3><p>Asistent pro školy vyvíjíme, k dispozici je rozpracovaný prototyp.</p><a href="https://salmon-hill-0181f9003.7.azurestaticapps.net/" target="_blank" rel="noopener" class="tool-link">Zobrazit prototyp <span class="tool-link-arrow">&#8599;</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <div class="section-header"><div class="eyebrow">Testimonials</div><h2>Co o programu říkají školy</h2><p>Reakce od účastníků pilotního programu 2026.</p></div>
+    <div class="testimonials-grid">
+      <div class="testimonial"><div class="testimonial-quote">"S ClimaMonitorem se ze tříd stávají praktická výzkumná centra, kde studenti poznávají praktické výsledky znalostí. Naši studenti studují změnu klimatu, měří klimatické veličiny, chápou zákonitosti výzkumu a stávají se součástí řešení."</div><div class="testimonial-author"><div class="testimonial-avatar">ST</div><div><div class="testimonial-name">Učitel fyziky</div><div class="testimonial-role">Pilotní škola</div></div></div></div>
+      <div class="testimonial"><div class="testimonial-quote">"Naši studenti přispívají ke skutečnému výzkumu změn klimatu. ClimaMonitor přináší do vzdělávání život. Propojuje technologie, vědu a výzvy reálného světa do smysluplného celku. To je budoucnost moderního vzdělávání."</div><div class="testimonial-author"><div class="testimonial-avatar">HS</div><div><div class="testimonial-name">Ředitel školy</div><div class="testimonial-role">Pilotní škola</div></div></div></div>
+      <div class="testimonial"><div class="testimonial-quote">"Navrhli jsme program ClimaMonitor tak, abychom prostřednictvím vědy připravili příští generaci na výzvy spojené se změnou klimatu. Propojením škol s univerzitami a kombinací technologií se skutečnými daty připravujeme síť mladých výzkumníků po celé Evropě."</div><div class="testimonial-author"><div class="testimonial-avatar">UC</div><div><div class="testimonial-name">Coordinator výzkumu</div><div class="testimonial-role">ČZU PEF Praha</div></div></div></div>
+    </div>
+    <div class="testimonial-photos">
+      <div class="testimonial-photo"><img src="students-digging.jpg" alt="Studenti připravují pokusné plochy"></div>
+      <div class="testimonial-photo"><img src="students-sensor.jpg" alt="Studenti a učitel instalují meteorologickou sondu"></div>
+      <div class="testimonial-photo"><img src="teacher-instruction.jpg" alt="Učitel prezentuje experiment studentům venku"></div>
+    </div>
+  </div>
+</section>
+
+<section id="pilot" class="alt">
+  <div class="container">
+    <div class="pilot-block">
+      <div class="pilot-text">
+        <div class="eyebrow">2026 Pilotní Project</div>
+        <h2>Čirok a adaptace na změnu klimatu navržen ČZU Praha</h2>
+        <p>V prvním výzkumném cyklu pěstují školy čirok, plodinu odolnou vůči suchu, podle metodiky navržené Českou zemědělskou univerzitou v Praze. Studenti porovnávají zavlažované a nezavlažované pokusné plochy a měří, jak klimatické podmínky ovlivňují růst rostlin na různých místech v ČR.</p>
+        <p>Tento pilotní projekt demonstruje model v praxi: výsledky pozorování ze školních stanic přispívající daty do výzkumného programu ČZU v oblasti udržitelného zemědělství a adaptace na změnu klimatu.</p>
+        <a href="#contact" class="btn-outline">Zapojte se do programu v roce 2027</a>
+      </div>
+      <div class="pilot-visual">
+        <div class="pilot-badge"><div class="pilot-badge-dot"></div>Aktivní - Jaro až podzim 2026</div>
+        <div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-text"><strong>Únor - Mar:</strong> Sestavení meteosondy a příprava pokusné plochy</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-text"><strong>Dub - Kvě:</strong> Instalace meteosondy, příprava pokusných ploch</div></div>
+          <div class="tl-item"><div class="tl-dot amber"></div><div class="tl-text"><strong>Kvě - Čer:</strong> Setí, začátek pozorování</div></div>
+          <div class="tl-item"><div class="tl-dot amber"></div><div class="tl-text"><strong>Srp - Říj:</strong> Zrání a sklizeň, vyhodnocení výnosu</div></div>
+          <div class="tl-item"><div class="tl-dot blue"></div><div class="tl-text"><strong>Lis - Pro:</strong> Analýza dat, sdílení výsledků</div></div>
+          <div class="tl-item"><div class="tl-dot blue"></div><div class="tl-text"><strong>Pro - Led:</strong> Výzkumná zpráva ČZU pro školy</div></div>
+        </div>
+        <div class="pilot-stats">
+          <div class="stat-card"><div class="stat-num">4</div><div class="stat-desc">Počet škol v projektu</div></div>
+          <div class="stat-card"><div class="stat-num">CZU</div><div class="stat-desc">Univerzitní partner</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="container">
+    <div class="research-block">
+      <div><div class="eyebrow">ClimaMonitor for Research</div><h2>Distribuovaná evropská výzkumná síť</h2><p>Univerzity a výzkumné organizace mají přístup ke strukturované síti škol fungujících podle standardizovaných metodik pro sběr environmentálních dat. ClimaMonitor poskytuje cenově efektivní distribuovaný sběr dat, doložitelnou společenskou angažovanost a celoevropský rozsah spolupráce. Globální expanze je plánována na rok 2028.</p></div>
+      <a href="#contact" class="btn-amber">Chci se dozvědět víc</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="alt">
+  <div class="container">
+    <div class="contact-block">
+      <div class="contact-info">
+        <div class="eyebrow">Zapojte se</div>
+        <h2>Zapojte se do programu ClimaMonitor</h2>
+        <p>Ať už jste škola, učitel nebo výzkumná instituce, rádi od vás uslyšíme. Pošlete nám zprávu nebo si přímo domluvte hovor.</p>
+        <div class="contact-channels">
+          <a href="mailto:martin.tusl@climamonitor.com" class="contact-channel"><div class="contact-channel-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-channel-label">E-mail</div><div class="contact-channel-value">Pošlete nám e-mail</div></div></a>
+          <a href="https://www.linkedin.com/company/climamonitor/" target="_blank" rel="noopener" class="contact-channel"><div class="contact-channel-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div><div class="contact-channel-label">LinkedIn</div><div class="contact-channel-value">linkedin.com/company/climamonitor</div></div></a>
+          <a href="https://www.facebook.com/climamonitor/" target="_blank" rel="noopener" class="contact-channel"><div class="contact-channel-icon"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div><div><div class="contact-channel-label">Facebook</div><div class="contact-channel-value">facebook.com/climamonitor</div></div></a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Zanechte nám zprávu</h3>
+        <p class="contact-form-sub">Můžeme si o tom promluvit? Naplánujte si schůzku.</p>
+        <a href="https://calendly.com/climamonitor/30min?month=2026-07" target="_blank" rel="noopener" class="calendly-btn"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Plánování hovoru s Calendly</a>
+        <div class="form-divider"><span>nebo pošlete e-mail</span></div>
+        <a href="mailto:martin.tusl@climamonitor.com?subject=Dotaz k programu ClimaMonitor" class="btn-primary" style="display:block;text-align:center;width:100%;padding:0.875rem;">Napište nám</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand"><svg width="30" height="30" viewBox="6381 66 1597.531 1595.8657" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(0.19943335,0,0,0.19943335,4368.7175,-704.41103)"><path fill="#158466" d="m 10090,7864 v 0 c 0,-702 185,-1392 536,-2000 351,-608 856,-1113 1464,-1464 608,-351 1298,-536 2000,-536 v 0 c 702,0 1392,185 2000,536 608,351 1113,856 1464,1464 351,608 536,1298 536,2000 v 0 0 c 0,702 -185,1392 -536,2000 -351,608 -856,1113 -1464,1464 -608,351 -1298,536 -2000,536 v 0 c -702,0 -1392,-185 -2000,-536 -608,-351 -1113,-856 -1464,-1464 -351,-608 -536,-1298 -536,-2000 z"/></g><path fill="#729fcf" d="m 7235.7908,881.88148 c 188.162,-232.78386 50.6559,-37.93194 474.6884,-612.31086 144.526,123.76795 268.2631,344.16741 268.0515,599.68984 -0.1959,236.41134 -118.5744,470.04664 -281.0296,598.33914 -356.0128,-339.62 -304.8807,-416.3486 -461.7103,-585.71812 z"/><g transform="matrix(0.19943335,0,0,0.19943335,4368.7175,-704.41103)"><path fill="#729fcf" d="m 12250,7775 v 0 c 0,-307 81,-609 234,-875 154,-266 375,-487 641,-641 266,-153 568,-234 875,-234 v 0 c 307,0 609,81 875,234 266,154 487,375 641,641 153,266 234,568 234,875 v 0 0 c 0,307 -81,609 -234,875 -154,266 -375,487 -641,641 -266,153 -568,234 -875,234 v 0 c -307,0 -609,-81 -875,-234 -266,-154 -487,-375 -641,-641 -153,-266 -234,-568 -234,-875 z"/></g><g transform="matrix(0.20266857,0,0,0.20081935,4321.4832,-714.39296)"><path fill="#ffbf00" d="m 14600,5900 v 0 c 0,-228 60,-453 174,-650 114,-198 279,-362 476,-476 198,-114 422,-174 651,-174 v 0 c 228,0 452,60 650,174 197,114 362,278 476,476 114,197 174,422 174,650 v 0 0 c 0,228 -60,453 -174,650 -114,198 -279,362 -476,476 -198,114 -422,175 -650,175 v 0 c -229,0 -453,-61 -651,-175 -197,-114 -362,-278 -476,-476 -114,-197 -174,-422 -174,-650 z"/></g><g transform="matrix(0.21604633,0,0,0.21411458,4113.4916,-834.45622)"><path fill="#158466" d="m 14800,9900 v 0 c 0,-193 51,-383 147,-550 97,-167 236,-306 403,-403 167,-96 357,-147 550,-147 v 0 c 193,0 383,51 550,147 167,97 306,236 403,403 96,167 147,357 147,550 v 0 0 c 0,193 -51,383 -147,550 -97,167 -236,306 -403,403 -167,96 -357,147 -550,147 v 0 c -193,0 -383,-51 -550,-147 -167,-97 -306,-236 -403,-403 -96,-167 -147,-357 -147,-550 z"/></g></svg><span class="footer-brand-name">ClimaMonitor</span></div>
+        <p class="footer-tagline">Propojení škol a univerzitního výzkumu pomocí standardizované metody pozorování životního prostředí a praktického vědeckého vzdělávání.</p>
+      </div>
+      <div class="footer-col"><h4>Program</h4><a href="#about">O projektu</a><a href="#workflow">Jak to funguje</a><a href="#pilot">2026 Pilot</a><a href="#tools">Nástroje</a><a href="#research">Pro výzkumníky</a></div>
+      <div class="footer-col"><h4>Kontakt</h4><a href="mailto:martin.tusl@climamonitor.com">E-mail</a><a href="https://www.linkedin.com/company/climamonitor/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/climamonitor/" target="_blank" rel="noopener">Facebook</a></div>
+    </div>
+    <div class="footer-bottom"><p>&#169; 2026 ClimaMonitor s.r.o. &#183; Founded in the Czech Republic</p></div>
+  </div>
+</footer>
+
+</div><!-- end #content-cs -->
 
 <div id="wf-cursor-tip"></div>
 
 <script>
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
+var currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.getElementById('content-en').style.display = lang === 'en' ? '' : 'none';
+  document.getElementById('content-cs').style.display = lang === 'cs' ? '' : 'none';
+  document.getElementById('nav-en').style.display = lang === 'en' ? '' : 'none';
+  document.getElementById('nav-cs').style.display = lang === 'cs' ? '' : 'none';
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-cs').classList.toggle('active', lang === 'cs');
+  document.getElementById('mobileMenu-en').style.display = lang === 'en' ? '' : 'none';
+  document.getElementById('mobileMenu-cs').style.display = lang === 'cs' ? '' : 'none';
+  // Close mobile menu on switch
+  document.getElementById('mobileMenu-en').classList.remove('open');
+  document.getElementById('mobileMenu-cs').classList.remove('open');
+  // Re-attach tooltip listeners for active content
+  attachTooltips();
 }
+
+function toggleMenu() {
+  var id = currentLang === 'en' ? 'mobileMenu-en' : 'mobileMenu-cs';
+  document.getElementById(id).classList.toggle('open');
+}
+
 document.addEventListener('click', function(e) {
-  const menu = document.getElementById('mobileMenu');
-  const nav = document.querySelector('nav');
-  if (menu.classList.contains('open') && !nav.contains(e.target)) {
-    menu.classList.remove('open');
+  var nav = document.querySelector('nav');
+  var menuEn = document.getElementById('mobileMenu-en');
+  var menuCs = document.getElementById('mobileMenu-cs');
+  if (!nav.contains(e.target)) {
+    menuEn.classList.remove('open');
+    menuCs.classList.remove('open');
   }
 });
 
 // Cursor-following workflow tooltip
-const tip = document.getElementById('wf-cursor-tip');
-let currentStep = null;
+var tip = document.getElementById('wf-cursor-tip');
 
-document.querySelectorAll('.wf-step').forEach(function(step) {
-  const text = step.querySelector('.wf-tooltip') ? step.querySelector('.wf-tooltip').textContent : '';
-
-  step.addEventListener('mouseenter', function() {
+function attachTooltips() {
+  document.querySelectorAll('.wf-step').forEach(function(step) {
+    var tooltipEl = step.querySelector('.wf-tooltip');
+    var text = tooltipEl ? tooltipEl.textContent : '';
+    // Remove old listeners by cloning
+    var newStep = step.cloneNode(true);
+    step.parentNode.replaceChild(newStep, step);
     if (!text) return;
-    tip.textContent = text;
-    tip.classList.add('visible');
-    currentStep = step;
+    newStep.addEventListener('mouseenter', function() {
+      tip.textContent = text;
+      tip.classList.add('visible');
+    });
+    newStep.addEventListener('mousemove', function(e) {
+      var offset = 16;
+      var x = e.clientX + offset;
+      var y = e.clientY + offset;
+      if (x + 210 > window.innerWidth) x = e.clientX - 210 - offset;
+      if (y + 80 > window.innerHeight) y = e.clientY - 80 - offset;
+      tip.style.left = x + 'px';
+      tip.style.top = y + 'px';
+    });
+    newStep.addEventListener('mouseleave', function() {
+      tip.classList.remove('visible');
+    });
   });
+}
 
-  step.addEventListener('mousemove', function(e) {
-    const offset = 16;
-    let x = e.clientX + offset;
-    let y = e.clientY + offset;
-    // Keep within viewport
-    if (x + 210 > window.innerWidth) x = e.clientX - 210 - offset;
-    if (y + 80 > window.innerHeight) y = e.clientY - 80 - offset;
-    tip.style.left = x + 'px';
-    tip.style.top = y + 'px';
-  });
-
-  step.addEventListener('mouseleave', function() {
-    tip.classList.remove('visible');
-    currentStep = null;
-  });
-});
+attachTooltips();
 </script>
 </body>
 </html>
